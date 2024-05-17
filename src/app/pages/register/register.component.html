@@ -1,1 +1,40 @@
-<p>register works!</p>
+<main class="min-h-screen pt-8 flex justify-content-center align-items-center">
+  <p-card styleClass="m-auto w-full md:w-30rem my-0">
+    <ng-template pTemplate="title">
+      <h1 class="m-0 text-3xl text-center">Fazer cadastro</h1>
+    </ng-template>
+    <form [formGroup]="form" class="p-3 flex flex-column gap-3 formgrid">
+      <fieldset class="field col-12 m-0 p-0">
+        <legend class="mb-2">
+          <label for="username">Usuário</label>
+        </legend>
+        <span class="p-input-icon-right w-full">
+          <i class="pi pi-user"></i>
+          <input type="text" class="w-full" pInputText formControlName="username" placeholder="Digite seu usuário" id="username" [ngClass]="{ 'ng-invalid ng-dirty': inputInvalid('username') }" />
+        </span>
+        <div *ngIf="inputInvalid('username')">
+          <small class="text-red-600" *ngIf="getInputError('username', 'required')">Campo obrigatório</small>
+        </div>
+      </fieldset>
+
+      <fieldset class="field col-12 m-0 p-0">
+        <legend class="mb-2">
+          <label for="password">Senha</label>
+        </legend>
+        <p-password formControlName="password" placeholder="Digite sua senha" [toggleMask]="true" inputId="password" [ngClass]="{ 'ng-invalid ng-dirty': inputInvalid('password') }" [style]="{ width: '100%' }" [inputStyle]="{ width: '100%' }" promptLabel="Força da senha">
+        </p-password>
+        <div *ngIf="inputInvalid('password')">
+          <small class="text-red-600" *ngIf="getInputError('password', 'required')">Campo obrigatório</small>
+          <small class="text-red-600" *ngIf="getInputError('password', 'pattern')">A senha deve ter no minimo 6 caracteres<br />
+            sendo 1 maiusculo</small>
+        </div>
+      </fieldset>
+
+      <div class="flex col-12 p-0 pt-2 flex-column-reverse sm:flex-row sm:justify-content-end">
+        <p-button label="Criar conta" type="submit" styleClass="justify-content-center w-full sm:w-auto" [disabled]="form.invalid"></p-button>
+      </div>
+
+      <a class="no-underline hover:underline text-blue-700 align-self-start" href="/login">Já criei minha conta</a>
+    </form>
+  </p-card>
+</main>
