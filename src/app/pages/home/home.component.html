@@ -4,7 +4,7 @@
     <section class="px-4">
       <div class="flex justify-content-between align-items-center">
         <h2>{{contacts.length}} contatos</h2>
-        <p-button label="Novo Contato" [outlined]="true" size="small" severity="info" />
+        <p-button (onClick)="addContact()" label="Novo Contato" [outlined]="true" size="small" severity="info" />
       </div>
       <ul>
         @for (contact of contacts; track $index) {
@@ -14,13 +14,12 @@
             <p class="p-0 m-0">{{contact.email}}</p>
           </div>
           <div class="flex align-items-center">
-            <p-button icon="pi pi-user-edit" [rounded]="true" [text]="true" severity="info" />
-            <p-button icon="pi pi-trash" [rounded]="true" [text]="true" severity="danger" />
+            <p-button icon="pi pi-user-edit" (onClick)="editContact(contact)" [rounded]="true" [text]="true" severity="info" />
+            <p-button icon="pi pi-trash" (onClick)="deleteContact(contact.id)" [rounded]="true" [text]="true" severity="danger" />
           </div>
         </li>
         }
       </ul>
     </section>
   </p-card>
-
 </main>
