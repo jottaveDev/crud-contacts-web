@@ -6,10 +6,12 @@ import {
   Validators as V,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
 import { Contact } from '../../../models/contact';
 import { ContactsService } from '../../../services/contacts/contacts.service';
 
@@ -20,6 +22,7 @@ import { ContactsService } from '../../../services/contacts/contacts.service';
     CardModule,
     ReactiveFormsModule,
     InputTextModule,
+    ToastModule,
     NgClass,
     NgIf,
     ButtonModule,
@@ -32,7 +35,8 @@ export class AddContactComponent {
   constructor(
     private formBuilder: FormBuilder,
     private contactsService: ContactsService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   form = this.formBuilder.group({
@@ -54,8 +58,23 @@ export class AddContactComponent {
 
   onSubmit() {
     this.contactsService.postContact(this.form.value as Contact).subscribe({
-      next: () => this.router.navigate(['/home']),
-      error: (err) => console.log(err),
+      next: () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Contato adicionado com sucesso!',
+        });
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+        }, 3000);
+      },
+      error: () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Erro ao cadastrar contato!',
+        });
+      },
     });
   }
 }
