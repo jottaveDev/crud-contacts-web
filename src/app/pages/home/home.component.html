@@ -1,9 +1,11 @@
 <main class="min-h-screen pt-8 flex justify-content-center align-items-center">
+  <p-toast [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'500ms'" [showTransformOptions]="'translateX(100%)'" />
+  <p-confirmDialog />
   <p-card styleClass="m-auto w-full md:w-30rem my-0">
     <h1 class="text-center">Meus<span class="text-cyan-500">Contatos</span></h1>
     <section class="px-4">
       <div class="flex justify-content-between align-items-center">
-        <h2>{{contacts.length}} contatos</h2>
+        <h2>{{contacts.length}} {{contacts.length == 1 ? 'contato' : 'contatos'}}</h2>
         <p-button (onClick)="addContact()" label="Novo Contato" [outlined]="true" size="small" severity="info" />
       </div>
       <ul>
