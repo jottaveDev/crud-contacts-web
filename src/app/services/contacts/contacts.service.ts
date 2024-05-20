@@ -18,11 +18,8 @@ export class ContactsService {
     return this.http.post<Contact>(`${this.apiUrl}/contacts`, contact);
   }
 
-  editContact(contact: Contact) {
-    return this.http.put<Contact>(
-      `${this.apiUrl}/contacts/${contact.id}`,
-      contact
-    );
+  editContact(id: string, contact: Contact) {
+    return this.http.put<Contact>(`${this.apiUrl}/contacts/${id}`, contact);
   }
 
   deleteContact(contactId: string) {

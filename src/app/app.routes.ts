@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AddContactComponent } from './pages/home/add-contact/add-contact.component';
+import { EditContactComponent } from './pages/home/edit-contact/edit-contact.component';
 import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
@@ -15,6 +16,7 @@ export const routes: Routes = [
         path: 'add',
         component: AddContactComponent,
       },
+      { path: 'edit/:id', component: EditContactComponent },
     ],
   },
   {
