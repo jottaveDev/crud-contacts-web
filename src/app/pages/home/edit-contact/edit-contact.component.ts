@@ -32,7 +32,6 @@ import { ContactsService } from '../../../services/contacts/contacts.service';
   ],
   templateUrl: './edit-contact.component.html',
   styleUrl: './edit-contact.component.scss',
-  providers: [MessageService],
 })
 export class EditContactComponent {
   constructor(
