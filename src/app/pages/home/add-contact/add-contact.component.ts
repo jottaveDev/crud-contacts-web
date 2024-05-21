@@ -68,11 +68,11 @@ export class AddContactComponent {
           this.router.navigate(['/home']);
         }, 3000);
       },
-      error: () => {
+      error: (err) => {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
-          detail: 'Erro ao cadastrar contato!',
+          detail: `${err.error.message}`,
         });
       },
     });
