@@ -1,7 +1,7 @@
 <main class="min-h-screen pt-8 flex justify-content-center align-items-center">
   <p-toast [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'500ms'" [showTransformOptions]="'translateX(100%)'" />
   <p-card styleClass="m-auto w-full md:w-30rem my-0">
-    <h1 class="text-center">Cadastrar Contato</h1>
+    <h1 class="text-center">Editar Contato</h1>
     <section class="px-4">
       <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-3 flex flex-column gap-3 formgrid">
         <fieldset class="field col-12 m-0 p-0">
@@ -19,7 +19,7 @@
 
         <fieldset class="field col-12 m-0 p-0">
           <legend class="mb-2">
-            <label for="password">Email</label>
+            <label for="email">Email</label>
           </legend>
           <span class="p-input-icon-right w-full">
             <i class="pi pi-envelope"></i>
