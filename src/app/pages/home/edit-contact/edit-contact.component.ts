@@ -76,13 +76,14 @@ export class EditContactComponent {
             this.router.navigate(['/home']);
           }, 3000);
         },
-        error: () =>
+        error: (err) => {
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: 'Ocorreu um erro ao editar o contato!',
+            detail: `${err.error.message}`,
             life: 3000,
-          }),
+          });
+        },
       });
   }
 }
